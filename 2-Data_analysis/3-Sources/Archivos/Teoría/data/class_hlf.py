@@ -3,3 +3,4 @@ class Barco():
 
 class Tablero():
 	jugadores = 4
+
