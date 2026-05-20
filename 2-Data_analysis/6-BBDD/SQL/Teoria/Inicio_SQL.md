@@ -116,7 +116,59 @@ CREATE TABLE Prestamo (
   FOREIGN KEY (id_usuario) REFERENCES Usuario(id_usuario)
 );
 ```
+```sql
 
+-- Tabla de autores
+CREATE TABLE Autor (
+  id_autor INT PRIMARY KEY,
+  nombre VARCHAR(100),
+  nacionalidad VARCHAR(50)
+);
+
+-- Tabla de libros
+CREATE TABLE Libro (
+  id_libro INT PRIMARY KEY,
+  titulo VARCHAR(150),
+  id_autor INT,
+  FOREIGN KEY (id_autor) REFERENCES Autor(id_autor)
+);
+
+-- Tabla de usuarios
+CREATE TABLE Usuario (
+  id_usuario INT PRIMARY KEY,
+  nombre VARCHAR(100),
+  email VARCHAR(100)
+);
+
+-- Tabla de préstamos
+CREATE TABLE Prestamo (
+  id_prestamo INT PRIMARY KEY,
+  id_libro INT,
+  id_usuario INT,
+  fecha_prestamo DATE,
+  FOREIGN KEY (id_libro) REFERENCES Libro(id_libro),
+  FOREIGN KEY (id_usuario) REFERENCES Usuario(id_usuario)
+);
+
+--Fk de libro y autor
+ALTER TABLE libro
+ADD CONSTRAINT FK_LIBRO_AUTOR
+FOREIGN KEY (id_autor)
+REFERENCES autor(id_autor);
+
+-- FK de prestamo a libro
+ALTER TABLE prestamo
+ADD CONSTRAINT FK_PRES_LIBRO
+FOREIGN KEY (id_libro)
+REFERENCES libro(id_libro);
+
+-- FK de prestamo a usuario
+ALTER TABLE prestamo
+ADD CONSTRAINT FK_PRES_USUARIO
+FOREIGN KEY (id_usuario)
+REFERENCES usuario(id_usuario);
+
+```
 ---
 
 ## 2. Inserción de Datos
