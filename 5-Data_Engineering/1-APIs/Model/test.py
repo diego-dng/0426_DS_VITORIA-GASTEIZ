@@ -1,7 +1,7 @@
 import requests
 
 def test_predict_endpoint():
-    url = 'http://localhost:8000/predict'  
+    url = 'http://localhost:5000/predict'  
     data = {'data': [[100, 100, 200]]} 
     
     response = requests.get(url, json=data)
